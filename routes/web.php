@@ -40,3 +40,6 @@ Route::get('/', function () {
 
 //     dump($debug);
 // });
+
+Auth::routes();
+
