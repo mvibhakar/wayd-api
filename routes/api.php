@@ -17,7 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/day', function (Request $request) 
-{
-    return "hopla";
-});
+Route::get('/day', 'DayController@index');
