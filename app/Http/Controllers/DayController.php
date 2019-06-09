@@ -9,11 +9,12 @@ use App\Thought;
 
 class DayController extends Controller
 {
-    public function index()
+    // date looks like YYYY-MM-DD
+    public function dateData(Request $request, $date)
     {
-        $events = Event::get();
-        $todos = ToDo::get();
-        $thoughts = Thought::get();
+        $events = Event::where('user_id', $request->user())->whereDate('date', $date)->get();
+        $todos = ToDo::whereDate('date', $date)->get();
+        $thoughts = Thought::whereDate('date', $date)->get();
 
         return ([
             'events' => $events,

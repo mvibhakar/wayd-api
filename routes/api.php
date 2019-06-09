@@ -17,4 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/day', 'DayController@index');
+Route::middleware('auth:api')->get('/day/{date}', 'DayController@dateData');
+
+Route::post('/signup', 'AuthController@register');
+
+Route::post('/login', 'AuthController@login');
+
+Route::post('/logout', 'AuthController@logout');
